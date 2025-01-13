@@ -3,6 +3,7 @@
 	import Fileby from "../routes/Fileby.svelte" // Import du footer
 	
 	let onScreen:string = $state("")
+	let current:number = $state(0 | 0)
 
 	// Solving (eval() solve string type equation but isn't very safe... but I don't really care)
 	function solve():void {onScreen=eval(onScreen).toString(10)}
@@ -19,9 +20,15 @@
 			<div>calc</div>
 			<div id="themeSection">theme
 				<span id="btnPanel">
-					<button><span class="survol">1</span></button>
-					<button><span class="survol">2</span></button>
-					<button><span class="survol">3</span></button>
+					{#each [1, 2, 3] as item, index}
+					<button
+						id={index+1}
+						aria-current={current===index}
+						onclick={() => current=index}
+						class={(index==current)? "themeActif":"themeInactif"}>
+							<span class="survol">{index+1}</span>
+						</button>
+					{/each}
 				</span>
 			</div>
 		</div>
@@ -108,20 +115,21 @@
 	#btnPanel{
 		background-color: #181F32;
 		border-radius: 100px;
-		padding: 1% 2%;
+		padding: .5% 2%;
 		width: 100%;
 	}
 
 	#btnPanel>button{
 		border-radius: 20px;
-		height: 20px;
-		width: 20px;
+		height: 20px; width: 20px;
 	}
 
-	#btnPanel>button, #equals{
+	.themeActif, #equals{
 		background-color: #D13F30;
 		color: #fcffff;
 	}
+
+	.themeInactif{background-color: #181F32;}
 
 	#btnPanel>button:active, #equals:active{background-color: #F96C5B;}
 
@@ -183,10 +191,9 @@
 	}
 
 	.clearButton:active{background-color: #A2B3E1;}
-
 </style>
 
-<!-- 
+<!-- THEME 1:
 txt: fcffff
 champs saisie & txt btn: 252D44
 btn: EAE2DB
@@ -195,4 +202,26 @@ btn-HOVER : white
 del & clr: A2B3E1
 écran: 181F32
 body: 3B4664
+-->
+
+<!-- THEME 2:
+txt:
+champs saisie & txt btn:
+btn:
+btn-HOVER :
+= & theme:
+del & clr:
+écran: 
+body:
+-->
+
+<!-- THEME 3:
+txt:
+champs saisie & txt btn:
+btn:
+btn-HOVER :
+= & theme:
+del & clr:
+écran: 
+body:
 -->
