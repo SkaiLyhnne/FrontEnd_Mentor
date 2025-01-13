@@ -10,6 +10,8 @@
 
 	// Delete the last input by returning the string size-1
 	function remove():void {onScreen=onScreen.slice(0, onScreen.length-1)}
+
+	$inspect(current)
 </script>
 
 <div id="body">
