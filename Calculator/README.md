@@ -1,38 +1,31 @@
-# sv
+Hello and welcome. Here is the calculator exercise from the Frontend Mentor site (link below).
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Goals
+**Responsive Design**: Ensure the aesthetics of the calculator on different devices.
+**Learning Svelte 5**: Explore Svelte 5 features and best practices to create responsive, high-performance user interfaces.
+**Leraning Typescript**: Learn the basics of Typescript.
 
-## Creating a project
+Link: https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29
 
-If you're seeing this, you've probably already done this step. Congrats!
+# Setting up the project
 
-```bash
-# create a new project in the current directory
-npx sv create
+You need to install NodeJS and npm.
 
-# create a new project in my-app
-npx sv create my-app
-```
+## Install node
 
-## Developing
+If you've already downloaded NodeJS and npm, skip this step. Otherwise, follow the link below.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+https://nodejs.org/en/download
 
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
 
 ## Building
 
-To create a production version of your app:
+Once you've complete the previous step, download “Frontend_Mentor.zip”, then open the “Calculator” folder in your terminal and run the command line.
 
 ```bash
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+> You can preview the production build with `npm run preview`.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+Thanks for reading and/or your help.
