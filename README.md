@@ -1,7 +1,7 @@
 # FrontEnd_Mentor
 Hello and welcome. This repository contains exercises created by FrontEndMentor.io.
 
-Goals:
+# Goals:
 
 **Learning Svelte 5**: Explore Svelte 5 features and best practices to create responsive, high-performance user interfaces.
 
