@@ -1,6 +1,7 @@
 # FrontEnd_Mentor
 Hello and welcome. This repository contains exercises created by FrontEndMentor.io.
 
+
 # Goals:
 
 **Learning Svelte 5**: Explore Svelte 5 features and best practices to create responsive, high-performance user interfaces.
@@ -9,7 +10,10 @@ Hello and welcome. This repository contains exercises created by FrontEndMentor.
 
 **Responsive Design**: Ensure the aesthetics of the calculator on different devices.
 
+**Learning API**: Learn how to use an API.
+
 **Writing documentation**: Learn how to write documentation that provides relevant information for dev.
+
 
 # Setting up the project
 

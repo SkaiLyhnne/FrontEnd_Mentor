@@ -9,6 +9,7 @@
 		if(onScreen===""){
 			alert("Cannot solve empty expression")
 		}else{
+			onScreen=onScreen.replace("×", "*")
 			onScreen=eval(onScreen).toString(10)			
 		}
 	}
@@ -19,13 +20,13 @@
 </script>
 
 <div id="body" class={"colorBody"+(current+1)}>
-	
+
 	<section id="calculator">
-		
+
 		<section id="header">
 			<div>calc</div>
 			<div id="themePannel">
-				theme
+				<span id="spanFontSize">THEME</span>
 				<span id="toggleSpan" class={"toggle"+(current+1)}>
 					{#each [1, 2, 3] as item, index}
 					<button
@@ -43,36 +44,33 @@
 
 		<section id="keyboard" class={"keyboardColor"+(current+1)}>
 			<div class="divKeyboard">
-				<button class={"touch"+(current+1)} onclick={()=>onScreen+="7"}>7</button>
-				<button class={"touch"+(current+1)} onclick={()=>onScreen+="8"}>8</button>
-				<button class={"touch"+(current+1)} onclick={()=>onScreen+="9"}>9</button>
-				<button class={"delete"+(current+1)} onclick={remove}>DEL</button>
+				{#each [7, 8, 9] as item}
+					<button class={`tnum touch${(current+1)}`} onclick={()=>onScreen+=item}>{item}</button>
+				{/each}
+				<button class={"tdel delete"+(current+1)} onclick={remove}>DEL</button>
 			</div>
 
 			<div class="divKeyboard">
-				<button class={"touch"+(current+1)} onclick={()=>onScreen+="4"}>4</button>
-				<button class={"touch"+(current+1)} onclick={()=>onScreen+="5"}>5</button>
-				<button class={"touch"+(current+1)} onclick={()=>onScreen+="6"}>6</button>
-				<button class={"touch"+(current+1)} onclick={()=>onScreen+="+"}>+</button>
+				{#each [4, 5, 6, "+"] as item}
+					<button class={`tnum touch${(current+1)}`} onclick={()=>onScreen+=item}>{item}</button>
+				{/each}
 			</div>
 
 			<div class="divKeyboard">
-				<button class={"touch"+(current+1)} onclick={()=>onScreen+="1"}>1</button>
-				<button class={"touch"+(current+1)} onclick={()=>onScreen+="2"}>2</button>
-				<button class={"touch"+(current+1)} onclick={()=>onScreen+="3"}>3</button>
-				<button class={"touch"+(current+1)} onclick={()=>onScreen+="-"}>-</button>
+				{#each [1, 2, 3, "-"] as item}
+					<button class={`tnum touch${(current+1)}`} onclick={()=>onScreen+=item}>{item}</button>
+				{/each}
 			</div>
 
 			<div class="divKeyboard">
-				<button class={"touch"+(current+1)} onclick={()=>onScreen+="."}>.</button>
-				<button class={"touch"+(current+1)} onclick={()=>onScreen+="0"}>0</button>
-				<button class={"touch"+(current+1)} onclick={()=>onScreen+="/"}>/</button>
-				<button class={"touch"+(current+1)} onclick={()=>{onScreen+="*"}}>×</button>
+				{#each [".", 0, "/", "×"] as item}
+					<button class={`tnum touch${(current+1)}`} onclick={()=>onScreen+=item}>{item}</button>
+				{/each}
 			</div>
 
 			<div class="divKeyboard">
-				<button class={"reset"+(current+1)} onclick={()=>{onScreen=""}}>RESET</button>
-				<button class={"equals"+(current+1)} onclick={solve}>=</button>
+				<button class={`tfonc reset${(current+1)}`} onclick={()=>{onScreen=""}}>RESET</button>
+				<button class={`tfonc equals${(current+1)}`} onclick={solve}>=</button>
 			</div>
 		</section>
 	</section>
@@ -92,16 +90,17 @@
 	#body{
 		height: 95vh;
 		display: flex;
-		justify-content: center;
 		align-items: center;
+		justify-content: center;
 	}
+
+	button:hover{cursor: pointer;}
 
 	/*---------------------------------------CALCULATRICE---------------------------------------*/
 
 	section#calculator{
 		display: flex;
 		flex-direction: column;
-		width: 80%; /* À changer avec le media */
 	}
 
 	section#header{
@@ -120,14 +119,16 @@
 		border-radius: 100px;
 	}
 
-	#toggleSpan>button, input#screen, #keyboard, .divKeyboard>button{
+	#toggleSpan>button, input#screen, section#keyboard{
 		border: none;
-		border-radius: 8px;
+		border-radius: 10px;
 	}
+
+	#spanFontSize, .flyingTxt{font-size: x-small;}
 
 	.flyingTxt{
 		position: relative;
-		top: -22px;
+		top: -20px;
 	}
 
 	input#screen{
@@ -137,22 +138,58 @@
 		font-size: clamp(1rem, calc(2vw + 1rem), 5rem);
 	}
 
-	.divKeyboard>button{
-		font-size: 32px;
-		width: 50px;
-	}
-
 	#keyboard{
 		display: flex;
 		flex-direction: column;
-/*		align-items: center;*/
+		padding: 5% 2%;
 	}
 
-	#keyboard>.divKeyboard{
+	.divKeyboard{
 		display: flex;
-/*		flex-direction: row;*/
-		justify-content: space-between;
-		width: 90%;
+		flex-direction: row;
+		justify-content: space-around;
+		margin: 2%;
+	}
+
+	.divKeyboard>button{
+		transition: background-color 0.1s;
+		border-radius: 8px;
+		border: none;
+		height: 60px;
+	}
+
+	button.tnum, button.tdel{width: 60px;}
+	button.tdel{font-size: larger;}
+	button.tnum{font-size: 32px;}
+
+
+	@media (min-width: 375px) and (max-width: 579px) {
+		button.tfonc{
+			font-size: larger;
+			width: 120px;
+		}
+	}
+
+	@media (min-width: 580px) and (max-width: 1023px) {
+		button.tfonc{
+			font-size: larger;
+			width: 40%;
+		}
+	}
+
+	@media (min-width: 1024px) {
+
+		#calculator{width: 30%;}
+		
+		button.tnum, button.tdel{
+			min-width: 20%;
+			max-width: 50%;
+		}
+
+		button.tfonc{
+			font-size: larger;
+			width: 45%;
+		}
 	}
 
 	/*---------------------------------------COULEUR---------------------------------------*/
@@ -175,39 +212,41 @@
 	.colorScreen2{background-color: hsl(0, 0%, 93%);}
 	.colorScreen3{background-color: hsl(268, 71%, 12%);}
 
-	/*---------------Bouton changement de thème*/
+	/*--------------- Bouton de thème & égal*/
 
 	.themeActif1{background-color: hsl(6, 63%, 50%);}
 	.themeActif2{background-color: hsl(25, 98%, 40%);}
 	.themeActif3{background-color: hsl(176, 100%, 44%);}
 
-	/*---------------Bouton égal*/
-
 	.equals1{
 		background-color: hsl(6, 63%, 50%);
+		box-shadow: 0px 5px 0px hsl(6, 70%, 34%);
 		color: hsl(0, 0%, 100%);
 	}
 
 	.equals2{
 		background-color: hsl(25, 98%, 40%);
+		box-shadow: 0px 5px 0px hsl(24, 100%, 28%);
 		color: hsl(0, 0%, 100%);
 	}
 
 	.equals3{
 		color: hsl(198, 20%, 13%);
+		box-shadow: 0px 5px 0px hsl(176, 91%, 70%);
 		background-color: hsl(176, 100%, 44%);
 	}
 
-	.themeActif1:active, .equals1:active{background-color: hsl(30, 25%, 89%);}
-	.themeActif2:active, .equals2:active{background-color: hsl(45, 7%, 89%);}
-	.themeActif3:active, .equals3:active{background-color: hsl(268, 47%, 21%);}
+	/*Actif*/
+	.themeActif1:active, .equals1:active, .themeInactif1:active{background-color: hsl(6, 93%, 67%);}
+	.themeActif2:active, .equals2:active, .themeInactif2:active{background-color: hsl(25, 100%, 61%);}
+	.themeActif3:active, .equals3:active, .themeInactif3:active{background-color: hsl(177, 100%, 79%);}
 
-	/*Bouton Inactif*/
-	.themeInactif1{background-color: #252d44;}
-	.themeInactif2{background-color: #d3cdcd;}
-	.themeInactif3{background-color: #1e0836;}
+	/*Inactif*/
+	.themeInactif1{background-color: hsl(225, 30%, 21%);}
+	.themeInactif2{background-color: hsl(0, 6%, 82%);}
+	.themeInactif3{background-color: hsl(269, 74%, 12%);}
 
-	/*---------------Clavier*/
+	/*---------------Clavier & Toggle*/
 
 	.keyboardColor1, .toggle1{background-color: hsl(223, 31%, 20%);}
 	.keyboardColor2, .toggle2{background-color: hsl(0, 5%, 81%);}
@@ -215,50 +254,51 @@
 
 	/*---------------Touches*/
 
-	/*normale*/
 	.touch1{
 		background-color: hsl(30, 25%, 89%);
+		box-shadow: 0px 5px 0px hsl(26, 14%, 65%);
 		color:  hsl(221, 14%, 31%);
 	}
 
 	.touch2{
 		background-color: hsl(30, 25%, 89%);
+		box-shadow: 0px 5px 0px hsl(44, 11%, 60%);
 		color: hsl(60, 10%, 19%);
 	}
 
 	.touch3{
 		background-color: hsl(268, 47%, 21%);
+		box-shadow: 0px 5px 0px hsl(289, 70%, 36%);
 		color: hsl(52, 100%, 62%);
 	}
 
+	/*Actif*/
 	.touch1:active{background-color: white;}
 	.touch2:active{background-color: white;}
-	.touch3:active{background-color: #6b34ac;}
+	.touch3:active{background-color: hsl(267, 54%, 44%);}
 
-	/*Delet & reset*/
+	/*---------------Delete & reset*/
 
-	.delete1, .reset1{background-color: hsl(225, 21%, 49%);}
-	.delete1:active, .reset1:active{background-color: #a2b3e1;}
+	.delete1, .reset1{
+		background-color: hsl(225, 21%, 49%);
+		box-shadow: 0px 5px 0px hsl(224, 28%, 35%);
+	}
 
-	.delete3, .reset3{background-color: #56077c;}
-	.delete3:active, .reset3:active{background-color: #8432b0;}
+	.delete2, .reset2{
+		background-color: #388187;
+		box-shadow: 0px 5px 0px hsl(184, 60%, 24%);
+	}
 
-	.delete2, .reset2{background-color: #388187;}
-	.delete2:active, .reset2:active{background-color: #62b5bd;}
-	
+	.delete3, .reset3{
+		background-color: hsl(281, 89%, 26%);
+		box-shadow: 0px 5px 0px hsl(285, 92%, 52%);
+	}
+
+	/*Couleur police*/
 	.delete1, .reset1, .delete2, .reset2, .delete3, .reset3{color: hsl(0, 0%, 100%);}
+
+	/*Actif*/
+	.delete1:active, .reset1:active{background-color: hsl(224, 51%, 76%);}
+	.delete2:active, .reset2:active{background-color: hsl(185, 41%, 56%);}
+	.delete3:active, .reset3:active{background-color: hsl(279, 56%, 44%);}
 </style>
-
-<!--
-TODO: Ajouter une ombre aux touches
-
-Touche normale:
-	-theme1: hsl(224, 28%, 35%)
-
-del & restet:
-	-theme1: hsl(224, 28%, 35%)
-
-equals & theme:
-	-theme1: hsl(6, 70%, 34%)
-
--->
