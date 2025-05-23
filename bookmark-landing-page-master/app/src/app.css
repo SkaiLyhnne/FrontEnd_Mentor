@@ -1,0 +1,16 @@
+@font-face{
+	font-family: "Rubik";
+	src: url("./src/lib/font/Rubik-VariableFont_wght.ttf") format("ttf");
+	font-style: normal;
+	font-display: swap;
+}
+
+*{
+	font-family: "Rubik", "sans-serif";
+	line-height: 170%;
+	text-align: center;
+	font-weight: 400;
+	color: #656565;
+}
+
+body{margin: 0;}

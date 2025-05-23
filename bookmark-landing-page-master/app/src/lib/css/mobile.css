@@ -1,0 +1,214 @@
+/*
+La vue mobile est considéré à 375px
+
+Primary
+Blue 600: hsl(231, 69%, 60%)
+Red 400: hsl(0, 94%, 66%)
+
+Neutral
+Grey 50: hsl(0, 0%, 97%)
+Blue 950: hsl(229, 31%, 21%)
+
+Font size: 18px
+Font family: Rubik
+Weights: 400, 500
+*/
+
+/*------------------------------------EN-TÊTE------------------------------------*/
+
+header{margin: 0% 5%;}
+
+nav{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 10% 3% 20%;
+}
+
+nav>button#menu-button{
+	background: transparent;
+	justify-self: center;
+	padding: 2.5% 0 0 0;
+	margin: 0;
+}
+
+/*------------------------------------MAIN------------------------------------*/
+
+main{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	overflow-x: hidden;
+	position: relative;
+}
+
+#blue-shape1{
+	width: 110%;
+	position: absolute;
+	z-index: -1;
+	left: 4rem;
+	top: 4rem;
+}
+
+#tablette{
+	width: 95%;
+	margin-bottom: 5%;
+	align-self: center;
+}
+
+h1{
+	font-size: 24px;
+	font-weight: 550;
+	color: #242940;
+}
+
+p{margin: 3%;}
+/*p{font-size: 18px;}*/
+
+#get-it{
+	display: flex;
+	justify-content: space-evenly;
+	margin:  3.5vh 5% 10rem;
+}
+
+button{
+	cursor: pointer;
+	font-weight: 550;
+	padding: 13px 4%;
+	border-radius: 5px;
+	border: none;
+}
+
+.blue-btn, .white-btn{box-shadow: 0px 5px 7px lightgrey;}
+
+.white-btn{
+	background: hsl(0, 0%, 97%);
+	color: #686a72;
+}
+
+.blue-btn{
+	background: hsl(231, 69%, 60%);
+	color: white;
+}
+
+.red-btn{
+	background: #EC0000;
+	color: white;
+}
+
+#option-box{
+	width: 80%;
+	align-self: center;
+	border-bottom: 1px solid lightgrey;
+}
+
+.options{
+	border-top: 1px solid lightgrey;
+	padding: 5%;
+}
+
+#blue-shape2{
+	width: 110%;
+	position: absolute;
+	z-index: -1;
+	right: 4rem;
+	top:67.5rem;
+}
+
+#illustration-features{
+	width: 80%;
+	margin-bottom: 5%;
+	align-self: center;
+}
+
+#more-info{
+	align-self: center;
+	width: 30%;
+}
+
+/*-----------------------------------FOOTER-----------------------------------*/
+
+footer{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+#contact-us{
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: space-evenly;
+	background: hsl(231, 69%, 60%);
+	margin-top: 30%;
+	height: 330px;
+}
+
+#contact-us>*{color: white;}
+
+/*#already-joined{
+	text-transform: uppercase;
+	font-weight: 500;
+	font-size: 12px;
+}
+*/
+
+input{
+	border: none;
+	font-family: "Rubik", "sans-serif";
+	border-radius: 5px;
+	text-align: left;
+	padding: 4% 3%;
+	width: 75%;
+}
+
+#contact-us>#email-input{color: black;}
+
+input::placeholder{
+	text-align: left;
+	color: lightgrey;
+}
+
+#contact-us>button{width: 80%;}
+
+#foot{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	background: hsl(229, 31%, 21%);
+	height: 250px;
+	padding: 5%;
+}
+
+#go-top{
+	background: transparent;
+	border: none;
+}
+
+#go-top:active{
+	background: transparent;
+	border: none;
+}
+
+#logomark-white{
+	width: 40%;
+	align-self: center;
+}
+
+a{
+	text-decoration: none;
+	text-transform: uppercase;
+	color: white;
+}
+
+a:visited{text-decoration: none;}
+
+a:active, a:hover{color: hsl(0, 94%, 66%);}
+
+#social{
+	width: 45%;
+	display: flex;
+	justify-content: space-around;
+	align-self: center;
+	margin-top: 10%;
+}
